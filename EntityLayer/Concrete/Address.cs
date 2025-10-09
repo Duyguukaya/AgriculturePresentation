@@ -1,8 +1,8 @@
 ﻿namespace EntityLayer.Concrete
 {
-    public class Addres
+    public class Address
     {
-        public int AddresId { get; set; }
+        public int AddressId { get; set; }
         public string Description1 { get; set; }
         public string Description2 { get; set; }
         public string Description3 { get; set; }

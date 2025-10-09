@@ -1,8 +1,8 @@
 ﻿namespace EntityLayer.Concrete
 {
-    public class News
+    public class Announcement
     {
-        public int NewsId { get; set; }
+        public int AnnouncementId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
