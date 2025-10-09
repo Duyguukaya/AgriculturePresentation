@@ -1,0 +1,33 @@
+﻿@using EntityLayer.Concrete
+@model List<Service>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Yeni Hizmet Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Resim Yolu</th>
+        <th>Açıklama</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+        <td>@item.ServiceId</td>
+        <td>@item.Title</td>
+        <td>@item.Image</td>
+        <td>@item.Description</td>
+        <td>
+            <a href="/Service/DeleteService/@item.ServiceId" class="btn btn-outline-danger">Sil</a>
+            <a href="/Service/EditService/@item.ServiceId" class="btn btn-outline-primary">Güncelle</a>
+        </td>
+		</tr>
+	}
+</table>
+
+<a href="/Test/AddService/" class="btn btn-outline-info">Yeni Hizmet Ekle</a>
+
