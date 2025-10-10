@@ -6,7 +6,7 @@ namespace BusinessLayer.Concrete
 {
     public class AnnouncementManager : IAnnouncementService
     {
-        private readonly IAnnouncementDal _announcementDal
+        private readonly IAnnouncementDal _announcementDal;
         public AnnouncementManager(IAnnouncementDal announcementDal)
         {
             _announcementDal = announcementDal;

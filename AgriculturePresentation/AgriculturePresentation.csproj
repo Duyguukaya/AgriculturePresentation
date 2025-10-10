@@ -7,6 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\majestic-master\.DS_Store" />
+    <None Include="wwwroot\majestic-master\documentation\.DS_Store" />
+    <None Include="wwwroot\majestic-master\fonts\.DS_Store" />
+    <None Include="wwwroot\majestic-master\fonts\Roboto\.DS_Store" />
+    <None Include="wwwroot\majestic-master\images\.DS_Store" />
+    <None Include="wwwroot\majestic-master\images\auth\.DS_Store" />
+    <None Include="wwwroot\majestic-master\images\faces\.DS_Store" />
+    <None Include="wwwroot\majestic-master\js\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\charts\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\forms\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\icons\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\samples\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\tables\.DS_Store" />
+    <None Include="wwwroot\majestic-master\pages\ui-features\.DS_Store" />
+    <None Include="wwwroot\majestic-master\scss\.DS_Store" />
+    <None Include="wwwroot\majestic-master\scss\components\.DS_Store" />
+    <None Include="wwwroot\majestic-master\scss\mixins\.DS_Store" />
+    <None Include="wwwroot\majestic-master\vendors\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
       <PrivateAssets>all</PrivateAssets>
