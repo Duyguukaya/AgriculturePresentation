@@ -1,10 +1,14 @@
-using BusinessLayer.Abstract;
+﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Contexts;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddScoped<IServiceService, ServiceManager>();
@@ -29,6 +33,15 @@ builder.Services.AddDbContext<AgricultureContext>();
 
 
 builder.Services.AddControllersWithViews();
+
+// FluentValidation ekleme (yeni yöntem)
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
+// Validator’ları kaydet
+builder.Services.AddValidatorsFromAssemblyContaining<TeamValidator>();
+
+
 
 var app = builder.Build();
 
