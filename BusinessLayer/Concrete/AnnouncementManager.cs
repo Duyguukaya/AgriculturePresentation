@@ -12,6 +12,16 @@ namespace BusinessLayer.Concrete
             _announcementDal = announcementDal;
         }
 
+        public void AnnouncementStatuesToFalse(int id)
+        {
+            _announcementDal.AnnouncementStatuesToFalse(id);
+        }
+
+        public void AnnouncementStatuesToTrue(int id)
+        {
+            _announcementDal.AnnouncementStatuesToTrue(id);
+        }
+
         public void Delete(Announcement t)
         {
             _announcementDal.Delete(t);
