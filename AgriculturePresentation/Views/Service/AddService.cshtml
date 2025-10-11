@@ -1,24 +1,48 @@
 ﻿@model AgriculturePresentation.Models.ServiceAddViewModel
 @{
-    ViewData["Title"] = "AddService";
+    ViewData["Title"] = "Yeni Hizmet Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Yeni Hizmet Girişi</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white text-center rounded-top-4">
+                    <h4 class="mb-0">Yeni Hizmet Girişi</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="AddService" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label fw-semibold">Başlık</label>
+                            <input asp-for="Title" class="form-control" placeholder="Hizmet başlığını girin" />
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
 
-<form method="post">
-    <div class="form-group">
-    @Html.Label("Başlık")
-    <span asp-validation-for="Title" class="text-danger"></span>
-    <input type="text" asp-for="Title" class="form-control" />
-    <br />
-    @Html.Label("Görsel Yolu")
-        <span asp-validation-for="Image" class="text-danger"></span>
-    <input type="text" asp-for="Image" class="form-control" />
-    <br />
-    @Html.Label("Açıklama")
-        <span asp-validation-for="Description" class="text-danger"></span>
-    <input type="text" asp-for="Description" class="form-control" />
-    <br />
+                        <div class="mb-3">
+                            <label asp-for="Image" class="form-label fw-semibold">Görsel Yolu</label>
+                            <input asp-for="Image" class="form-control" placeholder="Örnek: /images/service1.jpg" />
+                            <span asp-validation-for="Image" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-semibold">Açıklama</label>
+                            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Hizmet açıklamasını girin"></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            
+                            <button type="submit" class="btn btn-info text-white px-4 py-2 fw-semibold">
+                                <i class="bi bi-save"></i> Kaydet
+                            </button>
+                            <a href="/Service/Index" class="btn btn-outline-secondary px-4 py-2 fw-semibold">
+                                <i class="bi bi-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="btn btn-outline-info">Kaydet</button>
-</form>
+</div>

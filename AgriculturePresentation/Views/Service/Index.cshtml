@@ -1,33 +1,58 @@
 ﻿@using EntityLayer.Concrete
 @model List<Service>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Hizmet Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+     var count = 0;
 }
 
-<h1>Yeni Hizmet Listesi</h1>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center rounded-top-4">
+            <h4 class="mb-0"><i class="bi bi-gear-fill me-2"></i>Yeni Hizmet Listesi</h4>
+            <a href="/Service/AddService/" class="btn btn-light fw-semibold">
+                <i class="bi bi-plus-circle me-1"></i> Yeni Hizmet Ekle
+            </a>
+        </div>
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Başlık</th>
-        <th>Resim Yolu</th>
-        <th>Açıklama</th>
-        <th>İşlemler</th>
-    </tr>
-    @foreach(var item in Model)
-    {
-        <tr>
-        <td>@item.ServiceId</td>
-        <td>@item.Title</td>
-        <td>@item.Image</td>
-        <td>@item.Description</td>
-        <td>
-            <a href="/Service/DeleteService/@item.ServiceId" class="btn btn-outline-danger">Sil</a>
-            <a href="/Service/EditService/@item.ServiceId" class="btn btn-outline-primary">Güncelle</a>
-        </td>
-		</tr>
-	}
-</table>
-
-<a href="/Test/AddService/" class="btn btn-outline-info">Yeni Hizmet Ekle</a>
-
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col" style="width:5%">#</th>
+                            <th scope="col" style="width:20%">Başlık</th>
+                            <th scope="col" style="width:20%">Resim</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col" style="width:20%" class="text-center">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td class="fw-semibold">@item.Title</td>
+                                <td>
+                                    <img src="@item.Image" alt="@item.Title" class="img-fluid rounded" style="max-height:60px;" />
+                                </td>
+                                <td>@item.Description</td>
+                                <td class="text-center">
+                                    <a href="/Service/EditService/@item.ServiceId" class="btn btn-outline-primary btn-sm me-2">
+                                        <i class="bi bi-pencil-square"></i> Güncelle
+                                    </a>
+                                    <a href="/Service/DeleteService/@item.ServiceId" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-trash3"></i> Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
