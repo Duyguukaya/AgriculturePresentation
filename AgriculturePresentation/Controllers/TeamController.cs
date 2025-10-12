@@ -44,7 +44,7 @@ namespace AgriculturePresentation.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return View(team);
+            return View();
         }
 
         public IActionResult UpdateTeam(int id)
