@@ -1,0 +1,16 @@
+﻿@using EntityLayer.Concrete
+@model List<Address>
+@*
+    _TopAddressPartial
+*@
+
+<div class="w3l_header_left">
+	@foreach (var item in Model)
+	{
+		<ul>
+			<li><i class="bi bi-geo-alt-fill"></i> @item.Description3</li>
+			<li><i class="bi bi-telephone-fill"></i> @item.Description4</li>
+			<li><i class="bi bi-envelope-fill"></i> <a href="mailto:@item.Description2">@item.Description2</a></li>
+		</ul>
+	}
+</div>

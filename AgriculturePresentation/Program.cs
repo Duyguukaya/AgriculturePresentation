@@ -2,6 +2,7 @@
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Contexts;
 using FluentValidation;
@@ -28,6 +29,12 @@ builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
 
 builder.Services.AddScoped<IAddressService, AddressManager>();
 builder.Services.AddScoped<IAddressDal, EfAddressDal>();
+
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
+
+builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
 
 builder.Services.AddDbContext<AgricultureContext>();
 
