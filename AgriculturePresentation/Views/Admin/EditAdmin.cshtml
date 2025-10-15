@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewData["Title"] = "EditAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h4 class="mb-0"><i class="bi bi-pencil-square me-2"></i> Admin Güncelleme</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form method="post">
+                        @Html.HiddenFor(x => x.AdminId)
+
+                        <div class="mb-3">
+                            <label asp-for="UserName" class="form-label fw-semibold">Kullanıcı Adı</label>
+                            <input asp-for="UserName" class="form-control" placeholder="Kullanıcı adını girin" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-semibold">Şifre</label>
+                            <input type="password" asp-for="Password" class="form-control" placeholder="Şifre girin" />
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary text-white px-4 py-2 fw-semibold">
+                                <i class="bi bi-save me-2"></i> Değişiklikleri Kaydet
+                            </button>
+                            <a href="/Admin/Index" class="btn btn-outline-secondary px-4 py-2 ms-2">
+                                <i class="bi bi-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
