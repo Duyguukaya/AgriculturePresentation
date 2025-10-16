@@ -1,52 +1,98 @@
-﻿
-@*
+﻿@*
     _DashboardChartPartial
 *@
 
 <div class="row">
 
-	<div class="col-md-7 grid-margin stretch-card">
+    <div class="col-md-7 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="myChart1" style="width:100%; max-width:100%; height:400px;"></canvas>
+            </div>
+        </div>
+    </div>
 
-		<div class="card">
-
-			<div class="card-body">
-
-				<p class="card-title">Cash deposits</p>
-
-				<p class="mb-4">To start a blog, think of a topic about and first brainstorm party is ways to write details</p>
-
-				<div id="cash-deposits-chart-legend" class="d-flex justify-content-center pt-3"></div>
-
-				<canvas id="cash-deposits-chart"></canvas>
-
-			</div>
-
-		</div>
-
-	</div>
-
-	<div class="col-md-5 grid-margin stretch-card">
-
-		<div class="card">
-
-			<div class="card-body">
-
-				<p class="card-title">Total sales</p>
-
-				<h1>$ 28835</h1>
-
-				<h4>Gross sales over the years</h4>
-
-				<p class="text-muted">Today, many people rely on computers to do homework, work, and create or store useful information. Therefore, it is important </p>
-
-				<div id="total-sales-chart-legend"></div>
-
-			</div>
-
-			<canvas id="total-sales-chart"></canvas>
-
-		</div>
-
-	</div>
+    <div class="col-md-5 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="myChart" style="width:100%; max-width:100%; height:400px;"></canvas>
+            </div>
+        </div>
+    </div>
 
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+<script>
+    // Bar Chart
+    const xValues = ["Buğday", "Arpa", "Mısır", "Mercimek", "Prinç"];
+    const yValues = [@ViewBag.v1, 59, 64, @ViewBag.v2, 65];
+    const barColors = ["red", "green","blue","orange","brown"];
+    const ctxBar = document.getElementById('myChart').getContext('2d');
+
+    new Chart(ctxBar, {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          label: "Production",
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: "2025 Bakliyat Üretimi",
+            font: { size: 16 }
+          }
+        }
+      }
+    });
+
+       // Scatter Chart - Yıllara göre Hasat Miktarı
+    const xyValues = [
+      {x:2015, y:50}, {x:2016, y:55}, {x:2017, y:60}, {x:2018, y:58},
+      {x:2019, y:62}, {x:2020, y:65}, {x:2021, y:70}, {x:2022, y:68},
+      {x:2023, y:72}, {x:2024, y:75}, {x:2025, y:80}
+    ];
+
+    const ctxScatter = document.getElementById('myChart1').getContext('2d');
+
+    new Chart(ctxScatter, {
+      type: "scatter",
+      data: {
+        datasets: [{
+          label: "Hasat Miktarı",
+          pointRadius: 5,
+          pointBackgroundColor: "green",
+          data: xyValues
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display:true },
+          title: {
+            display: true,
+            text: "Yıllara Göre Hasat Miktarı",
+            font: { size: 16 }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',            // önemli: ekseni sayısal yapar
+            title: { display:true, text:"Yıl" },
+          },
+          y: {
+            title: { display:true, text:"Hasat Miktarı (Ton)" }
+          }
+        }
+      }
+    });
+
+
+</script>
