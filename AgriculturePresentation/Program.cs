@@ -7,9 +7,11 @@ using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Contexts;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using OfficeOpenXml;
 
 var builder = WebApplication.CreateBuilder(args);
 
+ExcelPackage.License.SetNonCommercialPersonal("Duygu Kaya");
 
 // Add services to the container.
 builder.Services.AddScoped<IServiceService, ServiceManager>();
