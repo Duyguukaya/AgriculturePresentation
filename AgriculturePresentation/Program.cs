@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.Container;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
@@ -18,37 +19,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 ExcelPackage.License.SetNonCommercialPersonal("Duygu Kaya");
 
-// Add services to the container.
-builder.Services.AddScoped<IServiceService, ServiceManager>();
-builder.Services.AddScoped<IServiceDal, EfServiceDal>();
-
-builder.Services.AddScoped<ITeamService, TeamManager>();
-builder.Services.AddScoped<ITeamDal, EfTeamDal>();
-
-builder.Services.AddScoped<IImageService, ImageManager>();
-builder.Services.AddScoped<IImageDal, EfImageDal>();
-
-builder.Services.AddScoped<IContactService, ContactManager>();
-builder.Services.AddScoped<IConcatDal, EfContactDal>();
-
-builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();
-builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
-
-builder.Services.AddScoped<IAddressService, AddressManager>();
-builder.Services.AddScoped<IAddressDal, EfAddressDal>();
-
-builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
-builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
-
-builder.Services.AddScoped<IAboutService, AboutManager>();
-builder.Services.AddScoped<IAboutDal, EfAboutDal>();
-
-builder.Services.AddScoped<IAdminService, AdminManager>();
-builder.Services.AddScoped<IAdminDal, EfAdminDal>();
-
 builder.Services.AddDbContext<AgricultureContext>();
 
 builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AgricultureContext>();
+
+builder.Services.ContainerDependencies();
 
 
 builder.Services.AddControllersWithViews();

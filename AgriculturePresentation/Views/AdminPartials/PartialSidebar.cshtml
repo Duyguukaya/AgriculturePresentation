@@ -66,12 +66,18 @@
                 <span class="menu-title">Admin İşlemleri</span>
             </a>
         </li>
+     
         <li class="nav-item">
-            <a class="nav-link" href="/Login/LogOut">
-                <i class="mdi mdi-logout menu-icon"></i>
-                <span class="menu-title">Çıkış Yap</span>
-            </a>
+            <form asp-controller="Login" asp-action="Logout" method="post" class="m-0 p-0">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="nav-link btn btn-link text-start d-flex align-items-center" style="padding: 0.5rem 1rem; width:100%; border:none; background:none;">
+                    <i class="mdi mdi-logout menu-icon me-2"></i>
+                    <span class="menu-title">Çıkış Yap</span>
+                </button>
+            </form>
         </li>
+
+
     </ul>
 </nav>
 
