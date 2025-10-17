@@ -7,7 +7,12 @@ using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Contexts;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using OfficeOpenXml;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,8 +48,23 @@ builder.Services.AddScoped<IAdminDal, EfAdminDal>();
 
 builder.Services.AddDbContext<AgricultureContext>();
 
+builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AgricultureContext>();
+
 
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
+
+builder.Services.AddMvc();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+{
+    x.LoginPath = "/Login/Index/";
+});
 
 // FluentValidation ekleme (yeni yöntem)
 builder.Services.AddFluentValidationAutoValidation();
@@ -69,6 +89,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();  // 🔹 Kimlik doğrulama aktif edilmeli
 app.UseAuthorization();
 
 app.MapStaticAssets();
